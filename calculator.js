@@ -1,9 +1,10 @@
 //change num_prim if it is bigger then the inputs
 
+let Global_lmc = 1;
 
-function mmc(n1, n2){
-    mmc_tf = false;
-    //while the two number aren't 1 mmc_tf continues false
+function lmc(n1, n2){
+    lmc_tf = false;
+    //while the two number aren't 1 lmc_tf continues false
     let list_p = [];
     let total_p = 1
     //list of interger that are being used to divide the numbers
@@ -12,17 +13,17 @@ function mmc(n1, n2){
     let input1 = n1 
     let input2 = n2
 
-    while(mmc_tf == false){
+    while(lmc_tf == false){
         if (input1 == 1 && input2 == 1){
             console.log();
             for (let pos = 0; pos < list_p.length; pos++){
                 total_p = total_p*list_p[pos]
             };
             console.log('The division ended');
-            console.log(`Numbers use to calculate the mmc are: ${list_p}`);
-            console.log(`The mmc is: ${total_p}`);
-            //check if the number that were imputed are already divided 
-            break
+            console.log(`Numbers use to calculate the lmc are: ${list_p}`);
+            console.log(`The lmc is: ${total_p}`);
+            Global_lmc = total_p;
+            return Global_lmc
         }
 
         else if (num_prim != 2 && num_prim % 2 == 0 && num_prim % 3 == 0){
@@ -51,7 +52,7 @@ function mmc(n1, n2){
                 if (input1 == num_prim && input2 == num_prim){
                     //if the 2 inputs are EQUAL
                     list_p.push(num_prim);
-                    console.log('MMC ended');
+                    console.log('lmc ended');
                     break
                 }
                 else if ( input1== num_prim){
@@ -157,4 +158,46 @@ function mmc(n1, n2){
         
 }}}
 
-console.log(mmc(18,9))
+function Fraction_Operation(numerador1, denominador1, numerador2, denominador2, operation){
+    let final_numerator = 0;
+    let final_denominator = 0;
+
+    if (denominador1 !=  denominador2){
+        //in case denominators are not the same number
+        //calculate the lmc
+        lmc(denominador1,denominador2);
+        denominador1 = Global_lmc;
+        denominador2 = Global_lmc;
+
+        if (operation=='+'){
+            //in case the operation is sum
+            final_numerator = numerador1 + numerador2;
+            final_denominator = denominador1
+            console.log(final_numerator, '/',final_denominator)
+        }
+        else if (operation=='-'){
+            //if operation is minus
+            final_numerator = numerador1 - numerador2
+            final_denominator = denominador1
+            console.log(final_numerator, '/', final_denominator)
+        }
+
+    }
+    else{
+        //if denominators are the same
+        if (operation=='+'){
+            //in case the operation is sum
+            final_numerator = numerador1 + numerador2;
+            final_denominator = denominador1
+            console.log(final_numerator, '/',final_denominator)
+        }
+        else if (operation=='-'){
+            //if operation is minus
+            final_numerator = numerador1 - numerador2
+            final_denominator = denominador1
+            console.log(final_numerator, '/', final_denominator)
+        }
+    }
+}
+
+console.log(Fraction_Operation(7,2,9,5,'+'))
