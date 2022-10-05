@@ -159,6 +159,7 @@ function lmc(n1, n2){
     }
 }
 
+
 function Fraction_Operation(numerador1, denominador1, numerador2, denominador2, operation){
     let final_numerator = 0;
     let final_denominator = 0;
@@ -205,12 +206,14 @@ function Fraction_Operation(numerador1, denominador1, numerador2, denominador2, 
         }
 
         else if (operation== '*' || operation=='x' || operation =='X'){
+            //in case the operation is multiplying
             console.log(`Multiplicação de frações entre: ${numerador1}/${denominador1} X ${numerador2}/${denominador2}`)
             final_numerator = numerador1 * numerador2
             final_denominator = denominador1 * denominador2
             console.log(final_numerator, '/' ,final_denominator )
         }
         else if (operation=='/'){
+            //in case the operation is diving 
             console.log(`Divisão de fração entre: ${numerador1}/${denominador1} X ${numerador2}/${denominador2}`)
             final_numerator = numerador1 * denominador2
             final_denominator = numerador2 * denominador1
@@ -218,5 +221,20 @@ function Fraction_Operation(numerador1, denominador1, numerador2, denominador2, 
         }
     }
 }
+//console.log(Fraction_Operation(3,4,3,2,'/'))
 
-console.log(Fraction_Operation(3,4,3,2,'/'))
+
+function Exponent_Calculator(base, exponent){
+    console.log(`The base is ${base} and the exponent is ${exponent}`)
+    result = 1
+    //result will be multiplying with base 
+
+    for(let count=0;count < exponent; count++){
+        //if the exponent is not equal to count 
+        //result will continue to multiple with base (multiple itself)
+        result *= base
+    }
+
+    console.log(`The result will be ${result}`)
+}
+console.log(Exponent_Calculator(12,4))
