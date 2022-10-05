@@ -153,51 +153,70 @@ function lmc(n1, n2){
                     //in case the 2nd value can not be divided
                     input2 = input2*num_prim;
                     num_prim++;
+                }
             }
         }
-        
-}}}
+    }
+}
 
 function Fraction_Operation(numerador1, denominador1, numerador2, denominador2, operation){
     let final_numerator = 0;
     let final_denominator = 0;
-
-    if (denominador1 !=  denominador2){
+    if (denominador1 !=  denominador2 && operation =='+' || operation=='-'){
         //in case denominators are not the same number
         //calculate the lmc
         lmc(denominador1,denominador2);
         denominador1 = Global_lmc;
         denominador2 = Global_lmc;
-
+        
         if (operation=='+'){
             //in case the operation is sum
+            console.log(`Soma de frações entre: ${numerador1}/${denominador1} + ${numerador2}/${denominador2}`)
             final_numerator = numerador1 + numerador2;
             final_denominator = denominador1
             console.log(final_numerator, '/',final_denominator)
         }
         else if (operation=='-'){
             //if operation is minus
+            console.log(`Diferença de frações entre ${numerador1}/${denominador1} - ${numerador2}/${denominador2}`)
             final_numerator = numerador1 - numerador2
             final_denominator = denominador1
             console.log(final_numerator, '/', final_denominator)
         }
-
+        
     }
+
     else{
         //if denominators are the same
         if (operation=='+'){
             //in case the operation is sum
+            console.log(`Soma de frações entre: ${numerador1}/${denominador1} + ${numerador2}/${denominador2}`)
             final_numerator = numerador1 + numerador2;
             final_denominator = denominador1
             console.log(final_numerator, '/',final_denominator)
         }
+
         else if (operation=='-'){
             //if operation is minus
+            console.log(`Diferença de frações entre: ${numerador1}/${denominador1} - ${numerador2}/${denominador2}`)
             final_numerator = numerador1 - numerador2
             final_denominator = denominador1
             console.log(final_numerator, '/', final_denominator)
         }
+
+        else if (operation== '*' || operation=='x' || operation =='X'){
+            console.log(`Multiplicação de frações entre: ${numerador1}/${denominador1} X ${numerador2}/${denominador2}`)
+            final_numerator = numerador1 * numerador2
+            final_denominator = denominador1 * denominador2
+            console.log(final_numerator, '/' ,final_denominator )
+        }
+        else if (operation=='/'){
+            console.log(`Divisão de fração entre: ${numerador1}/${denominador1} X ${numerador2}/${denominador2}`)
+            final_numerator = numerador1 * denominador2
+            final_denominator = numerador2 * denominador1
+            console.log(final_numerator, '/' ,final_denominator )
+        }
     }
 }
 
-console.log(Fraction_Operation(7,2,9,5,'+'))
+console.log(Fraction_Operation(3,4,3,2,'/'))
