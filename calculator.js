@@ -221,7 +221,7 @@ function exponent_Calculator(base, exponent){
 }
 
 
-function calculo_expoentes(base1, exponent1, base2, exponent2, operation_exp){
+function calculate_numbers_with_exponent(base1, exponent1, base2, exponent2, operation_exp){
     
     if (base1 == base2){
         //if bases are equal the count will be focused on the exponents
