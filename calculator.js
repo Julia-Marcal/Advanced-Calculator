@@ -262,3 +262,20 @@ function calculate_numbers_with_exponent(base1, exponent1, base2, exponent2, ope
         }
     }
 }
+
+function calculate_fraction_with_expoents(numerator, denominator,is_negative, exponent_of_fraction){
+    if (exponent_of_fraction < 0){
+        exponent_of_fraction *= -1;
+    }
+    power_numerator = exponent_Calculator(numerator,exponent_of_fraction);
+    power_denominator = exponent_Calculator(denominator, exponent_of_fraction);
+
+    if (is_negative == true){
+        return `${power_denominator}` + '/' + `${power_numerator}`;
+    }
+    else{
+        return `${power_numerator}` + '/' + `${power_denominator}`;
+    }
+}
+
+console.log(calculate_fraction_with_expoents(5,2,true,-2))
