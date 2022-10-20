@@ -140,7 +140,7 @@ function lmc(n1, n2){
             }
         }
     }
-}
+};
 
 
 function fraction_Operation(numerador1, denominador1, numerador2, denominador2, operation){
@@ -204,12 +204,17 @@ function fraction_Operation(numerador1, denominador1, numerador2, denominador2, 
             return final_numerator + '/' + final_denominator; 
         }
     }
-}
+};
 
 
 function exponent_Calculator(base, exponent){
     result = 1
+    let exp_is_negative = false 
     //result will be multiplying with base 
+    if (exponent < 0){
+        exp_is_negative = true
+        exponent *= -1;
+    };
 
     for(let count=0;count < exponent; count++){
         //if the exponent is not equal to count 
@@ -217,8 +222,9 @@ function exponent_Calculator(base, exponent){
         result *= base
     };
 
-    return result;
-}
+    if (exp_is_negative=true){return 1 + '/' + result;}
+    else{return result;};
+};
 
 
 function calculate_numbers_with_exponent(base1, exponent1, base2, exponent2, operation_exp){
@@ -261,21 +267,26 @@ function calculate_numbers_with_exponent(base1, exponent1, base2, exponent2, ope
             return parseInt(diff_base1 / diff_base2 )
         }
     }
-}
+};
 
-function calculate_fraction_with_expoents(numerator, denominator,is_negative, exponent_of_fraction){
+
+function calculate_fraction_with_expoents(numerator, denominator, exponent_of_fraction){
+    //if exponent is negative, make it positive and fix is_negative to true
+    let is_negative = false;
     if (exponent_of_fraction < 0){
+        is_negative = true;
         exponent_of_fraction *= -1;
     }
+    //power the numbers
     power_numerator = exponent_Calculator(numerator,exponent_of_fraction);
     power_denominator = exponent_Calculator(denominator, exponent_of_fraction);
 
+    //if exponent is negative change the numbers order on the fraction
     if (is_negative == true){
         return `${power_denominator}` + '/' + `${power_numerator}`;
     }
     else{
         return `${power_numerator}` + '/' + `${power_denominator}`;
     }
-}
+};
 
-console.log(calculate_fraction_with_expoents(5,2,true,-2))
