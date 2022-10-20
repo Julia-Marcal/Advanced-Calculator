@@ -8,8 +8,8 @@
 - [x] Exponenciação.
 - [x] Operação de números com expoentes iguais ou diferentes.
 - [x] Exponenciação com números negativos ou positivos em fração.
-- [ ] Ser possivel o uso de expoentes negativos no expoent_calculator.
-- [ ] aumentar a documentação em novas funções.
+- [x] Ser possível o uso de expoentes negativos no expoent_calculator.
+- [x] aumentar a documentação/comentários em novas funções.
 
 
 ### **Importante**
