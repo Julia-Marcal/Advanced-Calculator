@@ -9,7 +9,8 @@
 - [x] Operação de números com expoentes iguais ou diferentes.
 - [x] Exponenciação com números negativos ou positivos em fração.
 - [x] Ser possível o uso de expoentes negativos no expoent_calculator.
-- [x] aumentar a documentação/comentários em novas funções.
+- [x] Aumentar a documentação/comentários em novas funções.
+- [x] Geometria plana - cálculo de área - !apenas algumas figuras!
 
 
 ### **Importante**
