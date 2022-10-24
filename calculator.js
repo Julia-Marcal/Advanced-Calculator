@@ -2,7 +2,7 @@ let Global_lmc = 1;
 // is the value of lmc that is scoped globaly
 //it was scoped that way so it can be used in other functions
 
-function lmc(n1, n2){
+function lmc(number1, number2){
     lmc_tf = false;
     //while the two number aren't 1 lmc_tf continues false
     let list_p = [];
@@ -10,8 +10,8 @@ function lmc(n1, n2){
     //list of integer that are being used to divide the numbers
     let num_prim = 2;
     // num prim
-    let input1 = n1 
-    let input2 = n2
+    let input1 = number1 
+    let input2 = number2
 
     while(lmc_tf == false){
         if (input1 == 1 && input2 == 1){
@@ -143,29 +143,29 @@ function lmc(n1, n2){
 };
 
 
-function fraction_Operation(numerador1, denominador1, numerador2, denominador2, operation){
+function fraction_Operation(numerador, denominador, numerador, denominador, operation){
     let final_numerator = 0;
     let final_denominator = 0;
 
-    if (denominador1 !=  denominador2 && operation =='+' || operation=='-'){
+    if (denominador !=  denominador && operation =='+' || operation=='-'){
         //in case denominators are not the same number
         //calculate the lmc
-        lmc(denominador1,denominador2);
-        denominador1 = Global_lmc;
-        denominador2 = Global_lmc;
+        lmc(denominador,denominador);
+        denominador = Global_lmc;
+        denominador = Global_lmc;
         
         if (operation=='+'){
             //in case the operation is sum
-            console.log(`Soma de frações entre: ${numerador1}/${denominador1} + ${numerador2}/${denominador2}`);
-            final_numerator = numerador1 + numerador2;
-            final_denominator = denominador1;
+            console.log(`Soma de frações entre: ${numerador}/${denominador} + ${numerador}/${denominador}`);
+            final_numerator = numerador + numerador;
+            final_denominator = denominador;
             return final_numerator + '/' + inal_denominator;
         }
         else if (operation=='-'){
             //if operation is minus
-            console.log(`Diferença de frações entre ${numerador1}/${denominador1} - ${numerador2}/${denominador2}`);
-            final_numerator = numerador1 - numerador2;
-            final_denominator = denominador1;
+            console.log(`Diferença de frações entre ${numerador}/${denominador} - ${numerador}/${denominador}`);
+            final_numerator = numerador - numerador;
+            final_denominator = denominador;
             return final_numerator + '/' + final_denominator
         }
         
@@ -175,32 +175,32 @@ function fraction_Operation(numerador1, denominador1, numerador2, denominador2, 
         //if denominators are the same
         if (operation=='+'){
             //in case the operation is sum
-            console.log(`Soma de frações entre: ${numerador1}/${denominador1} + ${numerador2}/${denominador2}`);
-            final_numerator = numerador1 + numerador2;
-            final_denominator = denominador1;
+            console.log(`Soma de frações entre: ${numerador}/${denominador} + ${numerador}/${denominador}`);
+            final_numerator = numerador + numerador;
+            final_denominator = denominador;
             return final_numerator + '/' + final_denominator;
         }
 
         else if (operation=='-'){
             //if operation is minus
-            console.log(`Diferença de frações entre: ${numerador1}/${denominador1} - ${numerador2}/${denominador2}`);
-            final_numerator = numerador1 - numerador2;
-            final_denominator = denominador1;
+            console.log(`Diferença de frações entre: ${numerador}/${denominador} - ${numerador}/${denominador}`);
+            final_numerator = numerador - numerador;
+            final_denominator = denominador;
             return final_numerator + '/' + final_denominator
         }
 
         else if (operation== '*' || operation=='x' || operation =='X'){
             //in case the operation is multiplying
-            console.log(`Multiplicação de frações entre: ${numerador1}/${denominador1} X ${numerador2}/${denominador2}`);
-            final_numerator = numerador1 * numerador2;
-            final_denominator = denominador1 * denominador2;
+            console.log(`Multiplicação de frações entre: ${numerador}/${denominador} X ${numerador}/${denominador}`);
+            final_numerator = numerador * numerador;
+            final_denominator = denominador * denominador;
             return final_numerator + '/' + final_denominator;
         }
         else if (operation=='/'){
             //in case the operation is diving 
-            console.log(`Divisão de fração entre: ${numerador1}/${denominador1} X ${numerador2}/${denominador2}`);
-            final_numerator = numerador1 * denominador2;
-            final_denominator = numerador2 * denominador1;
+            console.log(`Divisão de fração entre: ${numerador}/${denominador} X ${numerador}/${denominador}`);
+            final_numerator = numerador * denominador;
+            final_denominator = numerador * denominador;
             return final_numerator + '/' + final_denominator; 
         }
     }
@@ -227,40 +227,40 @@ function exponent_Calculator(base, exponent){
 };
 
 
-function calculate_numbers_with_exponent(base1, exponent1, base2, exponent2, operation_exp){
+function calculate_numbers_with_exponent(base, exponent, base, exponent, operation){
     
-    if (base1 == base2){
+    if (base == base){
         //if bases are equal the count will be focused on the exponents
-       if (operation_exp == '-'){
-        minus_exp = (exponent_Calculator(base1,exponent1)) - (exponent_Calculator(base2,exponent2))
+       if (operation == '-'){
+        minus_exp = (exponent_Calculator(base,exponent)) - (exponent_Calculator(base,exponent))
         return minus_exp;
        } 
-       else if (operation_exp == '+'){
-        sum_exp = (exponent_Calculator(base1,exponent1)) + (exponent_Calculator(base2,exponent2))
+       else if (operation == '+'){
+        sum_exp = (exponent_Calculator(base,exponent)) + (exponent_Calculator(base,exponent))
         return sum_exp;
        }
 
-       else if (operation_exp == '*' || operation_exp =='x' || operation_exp =='X'){
-        multiple_exp = [base1, (exponent1+exponent2)]
+       else if (operation == '*' || operation =='x' || operation =='X'){
+        multiple_exp = [base, (exponent+exponent)]
         return 'base: ' + multiple_exp[0] + '\nexpoente: ' + multiple_exp[1];
        }
        else{
-        division_exp = [base1, (exponent1-exponent2)]
+        division_exp = [base, (exponent-exponent)]
         return 'base: ' + division_exp[0] + '\nexpoente: ' + division_exp[1] ;
        }
     }
 
     else{
         //in case the bases imputed are different
-        diff_base1 = exponent_Calculator(base1, exponent1)
-        diff_base2 = exponent_Calculator(base2, exponent2)
-        if (operation_exp == '+'){
+        diff_base1 = exponent_Calculator(base, exponent)
+        diff_base2 = exponent_Calculator(base, exponent)
+        if (operation == '+'){
             return diff_base1 + diff_base2;
         }
-        else if (operation_exp == '-'){
+        else if (operation == '-'){
             return diff_base1 - diff_base2;
         }
-        else if (operation_exp == '*' || operation_exp == 'x' || operation_exp == 'X'){
+        else if (operation == '*' || operation == 'x' || operation == 'X'){
             return parseInt(diff_base1 * diff_base2)
         }
         else{
@@ -270,16 +270,16 @@ function calculate_numbers_with_exponent(base1, exponent1, base2, exponent2, ope
 };
 
 
-function calculate_fraction_with_expoents(numerator, denominator, exponent_of_fraction){
+function calculate_fraction_with_exponents(numerator, denominator, exponent){
     //if exponent is negative, make it positive and fix is_negative to true
     let is_negative = false;
-    if (exponent_of_fraction < 0){
+    if (exponent < 0){
         is_negative = true;
-        exponent_of_fraction *= -1;
+        exponent *= -1;
     }
     //power the numbers
-    power_numerator = exponent_Calculator(numerator,exponent_of_fraction);
-    power_denominator = exponent_Calculator(denominator, exponent_of_fraction);
+    power_numerator = exponent_Calculator(numerator,exponent);
+    power_denominator = exponent_Calculator(denominator, exponent);
 
     //if exponent is negative change the numbers order on the fraction
     if (is_negative == true){
@@ -289,4 +289,18 @@ function calculate_fraction_with_expoents(numerator, denominator, exponent_of_fr
         return `${power_numerator}` + '/' + `${power_denominator}`;
     }
 };
+
+function area_of_square(sqr_area = Number){
+    return sqr_area**2;
+}
+
+
+function area_of_rectangle_and_parallelogram(base = Number, height = Number){
+    return base*height;
+}
+
+function area_of_triangle(base = Number, height = Number){
+    return (base*height)/2;
+}
+
 
