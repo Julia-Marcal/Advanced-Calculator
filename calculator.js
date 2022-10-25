@@ -303,4 +303,14 @@ function area_of_triangle(base = Number, height = Number){
     return (base*height)/2;
 }
 
+function area_of_trapeze(big_base = Number, small_base = Number, height = Number){
+    return ((big_base+small_base)*height)/2;
+}
 
+function area_of_diamond(big_diagonal = Number, small_diagonal = Number){
+    return (big_diagonal * small_diagonal)/2;
+}
+
+function area_of_circle(radius){
+    return parseFloat(radius*3.14);
+}
