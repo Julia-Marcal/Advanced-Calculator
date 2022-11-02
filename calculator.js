@@ -1,3 +1,7 @@
+let num1 = document.querySelector('#num1')
+let num2 = document.querySelector('#num2')
+let resultado1 = document.querySelector('#res1')
+
 let Global_lmc = 1;
 // is the value of lmc that is scoped globaly
 //it was scoped that way so it can be used in other functions
@@ -10,8 +14,8 @@ function lmc(number1, number2){
     //list of integer that are being used to divide the numbers
     let num_prim = 2;
     // num prim
-    let input1 = number1 
-    let input2 = number2
+    let input1 = number1;
+    let input2 = number2;
 
     while(lmc_tf == false){
         if (input1 == 1 && input2 == 1){
@@ -23,6 +27,7 @@ function lmc(number1, number2){
             console.log(`Numbers used to calculate the lmc are: ${list_p}`);
             Global_lmc = total_p;
             lmc_tf = true;
+            window.alert(Global_lmc)
             return 'The lmc is: ' + Global_lmc
         }
 
@@ -207,26 +212,32 @@ function fraction_Operation(numerador, denominador, numerador, denominador, oper
 };
 
 
-function exponent_Calculator(base, exponent){
-    result = 1
-    let exp_is_negative = false 
-    //result will be multiplying with base 
-    if (exponent < 0){
-        exp_is_negative = true
-        exponent *= -1;
+function exponent_Calculator(){
+    let result = 1;
+    const exp_negative = num2
+    if (Number(num2 < 0)){
+        num2 *= -1;
     };
-
-    for(let count=0;count < exponent; count++){
+    
+    for(let count=0;count < num2.value; count++){
         //if the exponent is not equal to count 
         //result will continue to multiple with base (multiple itself)
-        result *= base
+        result *= Number(num1.value)
     };
-
-    if (exp_is_negative=true){return 1 + '/' + result;}
-    else{return result;};
+    
+    while (result > 1){
+        if (exp_negative< 0){
+            resultado1.innerHTML = `1/${result}`
+            return  '/' + result
+        }
+        else{ 
+            resultado1.innerHTML = `${result}`
+            return result;
+        };
+    }
 };
 
-
+console.log(exponent_Calculator(2,3))
 function calculate_numbers_with_exponent(base, exponent, base, exponent, operation){
     
     if (base == base){
@@ -294,7 +305,6 @@ function area_of_square(sqr_area = Number){
     return sqr_area**2;
 }
 
-
 function area_of_rectangle_and_parallelogram(base = Number, height = Number){
     return base*height;
 }
@@ -314,3 +324,4 @@ function area_of_diamond(big_diagonal = Number, small_diagonal = Number){
 function area_of_circle(radius){
     return parseFloat(radius*3.14);
 }
+
