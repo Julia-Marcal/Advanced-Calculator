@@ -1,7 +1,8 @@
 # Calculator_advanced
 
+**Site da Calculator_advanced sendo criado...**
 
-<p>É uma calculadora feita puramente em javascript, com funções que calculam:  <p>
+<p>É uma calculadora feita em javascript, com funções que calculam:  <p>
 
 - [x] MMC entre 2 números.
 - [x] Operação de fração.
@@ -10,8 +11,7 @@
 - [x] Exponenciação com números negativos ou positivos em fração.
 - [x] Ser possível o uso de expoentes negativos no expoent_calculator.
 - [x] Aumentar a documentação/comentários em novas funções.
-- [x] Geometria plana - cálculo de área - !apenas algumas figuras!
-
+- [x] Geometria plana 
 
 ### **Importante**
 
