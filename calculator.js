@@ -1,12 +1,17 @@
-let num1 = document.querySelector('#num1')
-let num2 = document.querySelector('#num2')
-let resultado1 = document.querySelector('#res1')
+let num1_lmc = document.querySelector('#num1_lmc')
+let num2_lmc = document.querySelector('#num2_lmc')
+let res_lmc = document.querySelector('#res_lmc')
+
+let num1_exponent_c = document.querySelector('#num1_exponent_c')
+let num2_exponent_c = document.querySelector('#num2_exponent_c')
+let res_exponent = document.querySelector('#res_exponent')
+
 
 let Global_lmc = 1;
 // is the value of lmc that is scoped globaly
 //it was scoped that way so it can be used in other functions
 
-function lmc(number1, number2){
+function lmc(){
     lmc_tf = false;
     //while the two number aren't 1 lmc_tf continues false
     let list_p = [];
@@ -14,20 +19,16 @@ function lmc(number1, number2){
     //list of integer that are being used to divide the numbers
     let num_prim = 2;
     // num prim
-    let input1 = number1;
-    let input2 = number2;
-
+    let input1 = num1_lmc.value;
+    let input2 = num2_lmc.value;
     while(lmc_tf == false){
         if (input1 == 1 && input2 == 1){
-            console.log();
             for (let pos = 0; pos < list_p.length; pos++){
                 total_p = total_p*list_p[pos]
             };
-            console.log('The division ended');
-            console.log(`Numbers used to calculate the lmc are: ${list_p}`);
             Global_lmc = total_p;
             lmc_tf = true;
-            window.alert(Global_lmc)
+            res_lmc.innerHTML = Global_lmc
             return 'The lmc is: ' + Global_lmc
         }
 
@@ -86,7 +87,6 @@ function lmc(number1, number2){
                     continue
                 }
                 else{
-                    console.log('At least one of them can be divided')
                     //check if both of them can be divided
                     if(Number.isInteger(input1) && Number.isInteger(input2)){
                         //add the number that was used to divide on the list 
@@ -214,24 +214,24 @@ function fraction_Operation(numerador, denominador, numerador, denominador, oper
 
 function exponent_Calculator(){
     let result = 1;
-    const exp_negative = num2
-    if (Number(num2 < 0)){
-        num2 *= -1;
+    const exp_negative = num2_exponent_c
+    if (Number(num2_exponent_c < 0)){
+        num2_exponent_c *= -1;
     };
     
-    for(let count=0;count < num2.value; count++){
+    for(let count=0;count < num2_exponent_c.value; count++){
         //if the exponent is not equal to count 
         //result will continue to multiple with base (multiple itself)
-        result *= Number(num1.value)
+        result *= Number(num1_exponent_c.value)
     };
     
     while (result > 1){
         if (exp_negative< 0){
-            resultado1.innerHTML = `1/${result}`
+            res_exponent.innerHTML = `1/${result}`
             return  '/' + result
         }
         else{ 
-            resultado1.innerHTML = `${result}`
+            res_exponent.innerHTML = `${result}`
             return result;
         };
     }
