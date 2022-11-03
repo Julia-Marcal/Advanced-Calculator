@@ -84,57 +84,43 @@ header{
     
     border-radius: 10px;
     border: solid black 3px;
-
+    
     padding: 5%;
     gap: 5px;
-
+    
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.437);
     text-align: center;
     font-weight: 700;
-
+    
     flex-direction: column;
     justify-items: center;
     justify-content: space-around;
     align-items: center;
 }
 
-@media (max-width:500px ) {
-    .quadrado{
-        width: 10%;
-        max-height:100%
-}
-}
-
-@media (max-width:800px) {
-    .quadrado{
-    
-        width: 120%;
-        max-height:100%;
-    }
-}
-
-@media (min-width:801px){    
-    .quadrado{
-        width: 20em;
-        max-height: 100%;
-    }
-} 
-
 .button{
-    
+    background-color: #e6e6e6;
     border-radius: 5px;
+    
     width: 30%;
     margin-top: -20px;
+    
+    box-shadow: 3px 2px 10px 1px rgba(0, 0, 0, 0.545);
+}
+
+.button:hover{
+    background-color: #c1c1c1;
+    cursor: pointer;
 }
 
 .inputnum{
-    border-radius: 6px;
-    border-style: none;
+    width: 100%;
 }
 
 ::placeholder{
     text-align: center;
 }
+
 
 /*!TIRAR SETAS DO TYPE NUMBER INPUT!*/
 /* Chrome, Safari, Edge, Opera */
@@ -149,3 +135,75 @@ input[type=number] {
   -moz-appearance: textfield;
 
 }
+
+input{
+    border-radius: 6px;
+    border-style: none;
+    text-align: center;
+}
+
+/*Fraction settings*/
+
+.fraction{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+.inputnum2{
+    display: grid;
+    width: 80%;
+    margin: 7px;
+}
+
+.button2{
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    
+    width: 30%;
+    margin-top: -20px;
+    padding: 0px;
+    text-align: center;
+    box-shadow: 3px 2px 10px 1px rgba(0, 0, 0, 0.545);
+}
+
+.button2:hover{
+    background-color: #c1c1c1;
+    cursor: pointer;
+}
+
+
+/*MEDIA*/
+
+@media (max-width:500px ) {
+    .quadrado{
+        width: 10%;
+        max-height:100%
+    }
+
+    .inputnum{
+        width: 60%;
+    }
+}
+
+@media (max-width:800px) {
+    .quadrado{
+        width: 120%;
+        max-height:100%;
+    }
+
+    .inputnum{
+        width: 80%;
+    }
+}
+
+@media (min-width:801px){    
+    .quadrado{
+        width: 20em;
+        height: 7em;
+        max-height: 100%;
+    }
+} 
+
