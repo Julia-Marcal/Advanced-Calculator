@@ -12,6 +12,7 @@ let Global_lmc = 1;
 //it was scoped that way so it can be used in other functions
 
 function lmc(){
+    res_lmc.innerHTML = ' ';
     lmc_tf = false;
     //while the two number aren't 1 lmc_tf continues false
     let list_p = [];
@@ -213,10 +214,12 @@ function fraction_Operation(numerador, denominador, numerador, denominador, oper
 
 
 function exponent_Calculator(){
+    res_exponent.innerHTML = '';
     let result = 1;
-    const exp_negative = num2_exponent_c
-    if (Number(num2_exponent_c < 0)){
-        num2_exponent_c *= -1;
+    const exp_negative = num2_exponent_c.value;
+
+    if (Number(num2_exponent_c.value < 0)){
+        num2_exponent_c.value *= -1;
     };
     
     for(let count=0;count < num2_exponent_c.value; count++){
@@ -224,17 +227,16 @@ function exponent_Calculator(){
         //result will continue to multiple with base (multiple itself)
         result *= Number(num1_exponent_c.value)
     };
-    
-    while (result > 1){
-        if (exp_negative< 0){
-            res_exponent.innerHTML = `1/${result}`
-            return  '/' + result
-        }
-        else{ 
-            res_exponent.innerHTML = `${result}`
-            return result;
-        };
+
+    if (result > 1 && exp_negative > 0){
+        res_exponent.innerHTML = `${result}`
+        return result;
+    };
+    if (exp_negative < 0){
+        res_exponent.innerHTML = `1/${result}`
+        return  '/' + result
     }
+        
 };
 
 console.log(exponent_Calculator(2,3))
