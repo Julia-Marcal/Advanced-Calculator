@@ -21,7 +21,7 @@ time, mark, audio, video {
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+	display: grid;
 }
 body {
 	line-height: 1;
@@ -55,11 +55,12 @@ header{
     flex-direction: row;
     justify-content: center;
 
-    margin: 30px;
+    margin-bottom: 50px;
+    margin-top: 10px;
 
     color: #7BB0B4;;
     text-align: center;
-    font-size: 500%;  
+    font-size: 600%;  
 
     -webkit-text-stroke: 2px black ;
     text-shadow: -8px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
@@ -67,39 +68,60 @@ header{
 
 }
 
-section{
+.grid-css{
+    display: grid;
+    
+    grid-template-columns: 200px 200px;
+    gap: 20%;
+    justify-items: center;
+    justify-content: center;
+
+}
+
+.quadrado{
     display: flex;
     background: #7BB0B4;
     
     border-radius: 10px;
     border: solid black 3px;
-    
-    width: 400px;
-    height: 150px;
+
+    padding: 5%;
+    gap: 5px;
 
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.437);
     text-align: center;
+    font-weight: 700;
 
     flex-direction: column;
-    align-items: center;
+    justify-items: center;
     justify-content: space-around;
+    align-items: center;
 }
 
-
-.Q1{
-    position: absolute;
-    margin-top: 2%;
-    margin-left: 8%;
+@media (max-width:500px ) {
+    .quadrado{
+        width: 10%;
+        max-height:100%
+}
 }
 
-.Q2{
-    position: absolute;
-    margin-left: 56%;
-    margin-top: 2%;
-
+@media (max-width:800px) {
+    .quadrado{
+    
+        width: 120%;
+        max-height:100%;
+    }
 }
+
+@media (min-width:801px){    
+    .quadrado{
+        width: 20em;
+        max-height: 100%;
+    }
+} 
 
 .button{
+    
     border-radius: 5px;
     width: 30%;
     margin-top: -20px;
