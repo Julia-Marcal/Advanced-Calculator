@@ -1,3 +1,10 @@
+let num1_fraction = document.querySelector('#fraction_num1')
+let num2_fraction  = document.querySelector('#fraction_num2')
+let num3_fraction  = document.querySelector('#fraction_num3')
+let num4_fraction  = document.querySelector('#fraction_num4')
+let operation_frac  = document.querySelector('#operator_fraction')
+let res_operation  = document.querySelector('#res_fraction')
+
 let num1_lmc = document.querySelector('#num1_lmc')
 let num2_lmc = document.querySelector('#num2_lmc')
 let res_lmc = document.querySelector('#res_lmc')
