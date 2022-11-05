@@ -20,99 +20,74 @@ let Global_lmc = 1;
 
 function lmc(){
     res_lmc.innerHTML = ' ';
-    lmc_tf = false;
-    //while the two number aren't 1 lmc_tf continues false
-    let list_p = [];
-    let total_p = 1
-    //list of integer that are being used to divide the numbers
+    //get html clean
+    let lmc_found = false;
+    let list_of_num_already_divided = [];
+    let total_sum_of_list = 1
     let num_prim = 2;
-    // num prim
     let input1 = num1_lmc.value;
     let input2 = num2_lmc.value;
-    while(lmc_tf == false){
+    while(lmc_found == false){
         if (input1 == 1 && input2 == 1){
-            for (let pos = 0; pos < list_p.length; pos++){
-                total_p = total_p*list_p[pos]
+            for (let pos = 0; pos < list_of_num_already_divided.length; pos++){
+                total_sum_of_list = total_sum_of_list*list_of_num_already_divided[pos]
             };
-            Global_lmc = total_p;
-            lmc_tf = true;
+            Global_lmc = total_sum_of_list;
             res_lmc.innerHTML = Global_lmc
-            return 'The lmc is: ' + Global_lmc
+            lmc_found = true;
         }
 
         else if (num_prim != 2 && num_prim % 2 == 0 && num_prim % 3 == 0){
-            //check if num_prim is a prime number
-            //if is not a prime number it will add and jump to the next input number
             num_prim ++
             continue
         }
 
         else if(num_prim > input1 && num_prim > input2){
-            //if num_prim greater than both of the numbers that are being divided
-            //reset num_prim so the numbers can be dived
             num_prim = 2;
         };
         
         if (input1 != 1 || input2 != 1){
-            //if input1 OR input2 are different then 1   
+            
             if (input1 == num_prim || input2==num_prim){
-                //if input1 OR input2 are EQUAL to the prime number
                 if (input1 == num_prim && input2 == num_prim){
-                    //if the 2 inputs are EQUAL
-                    list_p.push(num_prim);
+                    list_of_num_already_divided.push(num_prim);
                     break
                 }
                 else if ( input1 == num_prim){
-                    //if only the input1 is EQUAL  
-                    //Freeze the number that was already divided to 1
-                    list_p.push(num_prim);
-                    input1 = 1; 
-                    Object.freeze(input1);
+                    list_of_num_already_divided.push(num_prim);
+                    Object.freeze(input1=1);
                     continue
                 }
                 else if (input2 ==num_prim){
-                    //if only the input2 is EQUAL 
-                    //Freeze the number that was already divided to 1
-                    list_p.push(num_prim);
-                    input2 = 1;
-                    Object.freeze(input2);
+                    list_of_num_already_divided.push(num_prim);
+                    Object.freeze(input2=1);
                     continue
-                }}
+                }
+            }
 
-            //if the 2 inputs are different then 1
-            //and if they are not equal to the prime num
             else if (input1 != 1 && input1 != 1){
-                input1 = input1/num_prim;
-                input2 = input2/num_prim;
+                input1 /= num_prim;
+                input2 /= num_prim;
 
                 if (Number.isInteger(input1) == false && Number.isInteger(input2) == false){
-                    //if the 2 of them can't be divided by the prime num without having a rest 
-                    input1 = input1*num_prim; 
-                    input2 = input2*num_prim;
-                    //reset value of the variables because none of the numbers could be divided
-                    //change to the next prime number
+                    input1 *= num_prim; 
+                    input2 *= num_prim;
                     num_prim ++;
                     continue
                 }
                 else{
-                    //check if both of them can be divided
                     if(Number.isInteger(input1) && Number.isInteger(input2)){
-                        //add the number that was used to divide on the list 
-                        list_p.push(num_prim);
+                        list_of_num_already_divided.push(num_prim);
                         continue
                     }
                     else if(Number.isInteger(input1)){
-                        //in case the 1st value can be divided 
-                        list_p.push(num_prim);
-                        input2 = input2*num_prim;
-                        //reset the other input
+                        list_of_num_already_divided.push(num_prim);
+                        input2 *= num_prim;
                         continue
                     }
                     else if(Number.isInteger(input2)){
-                        //in case the 2nd value of them can be divided
-                        list_p.push(num_prim) ;
-                        input1 = input1*num_prim;
-                        //reset value of the one who can't be divided
+                        list_of_num_already_divided.push(num_prim) ;
+                        input1 *= num_prim;
                         continue
                     } 
                 }    
@@ -120,36 +95,27 @@ function lmc(){
 
             //check if only the first value is different than 1
             else if (input1 != 1){
-                input1 = input1/num_prim;
+                input1 /= num_prim;
                 
                 if(Number.isInteger(input1) == true){
                     //in case the 1st value of them can be divided 
-                    list_p.push(num_prim);
+                    list_of_num_already_divided.push(num_prim);
                     continue
                 }
-                //in case it can't be divided
-                else{
-                    //reset the value and change to the next prime number
-                    input1 = input1*num_prim;
-                    num_prim++;
-
-                }
+                input1 *= num_prim;
+                num_prim++;
             }
 
             //in case only the 2nd value is different than 1
             else if (input2 != 1){
-                input2 = input2/num_prim;
+                input2 /= num_prim;
 
                 if(Number.isInteger(input2) == true){
-                    //in case the 2nd value of them can be divided 
-                    list_p.push(num_prim);
+                    list_of_num_already_divided.push(num_prim);
                     continue
                 }
-                else{
-                    //in case the 2nd value can not be divided
-                    input2 = input2*num_prim;
-                    num_prim++;
-                }
+                input2 *= num_prim;
+                num_prim++;
             }
         }
     }
@@ -230,8 +196,6 @@ function exponent_Calculator(){
     };
     
     for(let count=0;count < num2_exponent_c.value; count++){
-        //if the exponent is not equal to count 
-        //result will continue to multiple with base (multiple itself)
         result *= Number(num1_exponent_c.value)
     };
 
