@@ -66,6 +66,22 @@ header{
     text-shadow: -8px 0 black, 0 1px black, 2px 0 black, 0 -1px black;
 }
 
+/*Barra de scroll*/
+
+body::-webkit-scrollbar {
+    width: 0.75rem;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #88C4C8;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.424);
+  }
+
+
 .lamp{
     display: flex;
     position: fixed;
@@ -79,7 +95,7 @@ header{
 
 .bulb{
     position: relative;
-    background-color: rgb(250, 250, 61);
+    background-color: rgb(249, 250, 0);
     height: 4em;
     width: 4em;
     border-radius: 100%;
@@ -88,10 +104,6 @@ header{
     z-index: 99;
 }
 
-.bulb:hover{
-    cursor: pointer;
-    background-color: rgb(249, 249, 0);
-}
 
 .light_lamp{
     background: radial-gradient(circle, rgb(217, 242, 243) 0%, #88C4C8 60%);
@@ -101,11 +113,24 @@ header{
     opacity: 40%;
 }
 
+.bulb:hover{
+    cursor: pointer;
+    background-color: rgba(249, 249, 63);
+    box-shadow: 0px 0px 0px;
+    border: 1px solid #e6e6e6;
+}
+
+.bulb:hover + .light_lamp{
+    opacity: 20%;
+}
+
+
 .grid-css{
     display: grid;
     
     grid-template-columns: 200px 200px;
-    gap: 20%;
+    row-gap: 15%;
+    column-gap: 20%;
     justify-items: center;
     justify-content: center;
 
@@ -235,7 +260,11 @@ input{
 @media (max-width:840px){
     .bulb{
         margin: -75%;
-        width: 4.7em;
+        margin-left: 80%;
+    }
+
+    .light_lamp{
+        clip-path: polygon(45% 33%, 55% 33%, 60% 100%, 30% 100%)
     }
 }
 
