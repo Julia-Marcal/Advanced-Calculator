@@ -1,9 +1,9 @@
-let num1_fraction = document.querySelector('#fraction_num1')
-let num2_fraction  = document.querySelector('#fraction_num2')
-let num3_fraction  = document.querySelector('#fraction_num3')
-let num4_fraction  = document.querySelector('#fraction_num4')
+let num1_numerator = document.querySelector('#fraction_num1')
+let num2_denominator  = document.querySelector('#fraction_num2')
+let num3_numerator  = document.querySelector('#fraction_num3')
+let num4_denominator  = document.querySelector('#fraction_num4')
 let operation_frac  = document.querySelector('#operator_fraction')
-let res_operation  = document.querySelector('#res_fraction')
+let res_operation_of_fractions  = document.querySelector('#res_fraction')
 
 let num1_lmc = document.querySelector('#num1_lmc')
 let num2_lmc = document.querySelector('#num2_lmc')
@@ -15,26 +15,38 @@ let res_exponent = document.querySelector('#res_exponent')
 
 
 let Global_lmc = 1;
-// is the value of lmc that is scoped globaly
+// is the value of lmc that is scoped globally
 //it was scoped that way so it can be used in other functions
 
-function lmc(){
+function lmc(x, y, input_lmc){
     res_lmc.innerHTML = ' ';
     //get html clean
     let lmc_found = false;
     let list_of_num_already_divided = [];
     let total_sum_of_list = 1
     let num_prim = 2;
-    let input1 = num1_lmc.value;
-    let input2 = num2_lmc.value;
+    let input2;
+    let input1;
+    if (input_lmc == 1){
+        input1 = x
+        input2 = y
+    }
+    else{
+        input1 = num1_lmc.value
+        input2 = num2_lmc.value   
+    }
+    
     while(lmc_found == false){
         if (input1 == 1 && input2 == 1){
             for (let pos = 0; pos < list_of_num_already_divided.length; pos++){
                 total_sum_of_list = total_sum_of_list*list_of_num_already_divided[pos]
             };
-            Global_lmc = total_sum_of_list;
+        Global_lmc = total_sum_of_list;
+        if (input_lmc != 1){
             res_lmc.innerHTML = Global_lmc
             lmc_found = true;
+        }
+        lmc_found = true
         }
 
         else if (num_prim != 2 && num_prim % 2 == 0 && num_prim % 3 == 0){
@@ -122,65 +134,69 @@ function lmc(){
 };
 
 
-function fraction_Operation(numerador, denominador, numerador, denominador, operation){
+function fraction_Operation(){
     let final_numerator = 0;
     let final_denominator = 0;
-
-    if (denominador !=  denominador && operation =='+' || operation=='-'){
+    res_exponent.innerHTML = operation_frac.innerHTML;
+    if (num2_denominator.value !==  num4_denominator.value && operation_frac.value == '+' || 
+    num2_denominator.value !==  num4_denominator.value && operation_frac.value == '-'){
         //in case denominators are not the same number
         //calculate the lmc
-        lmc(denominador,denominador);
-        denominador = Global_lmc;
-        denominador = Global_lmc;
+
+        lmc(Number(num2_denominator.value) , Number(num4_denominator.value),true);
         
-        if (operation=='+'){
+        if (operation_frac.value == '+'){
             //in case the operation is sum
-            console.log(`Soma de frações entre: ${numerador}/${denominador} + ${numerador}/${denominador}`);
-            final_numerator = numerador + numerador;
-            final_denominator = denominador;
-            return final_numerator + '/' + inal_denominator;
+            final_numerator = num1_numerator.value + num3_numerator.value;
+            final_denominator = Global_lmc;
+            res_operation_of_fractions.innerHTML = `${final_numerator}` + '/' + `${final_denominator}`
         }
-        else if (operation=='-'){
+        else if (operation_frac.value == '-'){
             //if operation is minus
-            console.log(`Diferença de frações entre ${numerador}/${denominador} - ${numerador}/${denominador}`);
-            final_numerator = numerador - numerador;
-            final_denominator = denominador;
-            return final_numerator + '/' + final_denominator
+            if (Number(num1_numerator.value) < Number(num3_numerator.value)){
+                final_numerator = -(Number(num3_numerator.value) - Number(num1_numerator.value))
+            }
+            else{
+                final_numerator = Number(num1_numerator.value) - Number(num3_numerator.value)
+            }
+            final_denominator = Global_lmc;
+            res_operation_of_fractions.innerHTML = `${final_numerator}` + '/' + `${final_denominator}`
         }
         
     }
 
     else{
         //if denominators are the same
-        if (operation=='+'){
+        if (operation_frac.value == '+'){
             //in case the operation is sum
-            console.log(`Soma de frações entre: ${numerador}/${denominador} + ${numerador}/${denominador}`);
-            final_numerator = numerador + numerador;
-            final_denominator = denominador;
-            return final_numerator + '/' + final_denominator;
+            final_numerator = num1_numerator + num3_numerator;
+            final_denominator = num2_denominator;
+            res_operation_of_fractions.innerHTML = `${final_numerator}` + '/' + `${final_denominator}`
         }
 
-        else if (operation=='-'){
+        else if (operation_frac.value == '-'){
             //if operation is minus
-            console.log(`Diferença de frações entre: ${numerador}/${denominador} - ${numerador}/${denominador}`);
-            final_numerator = numerador - numerador;
-            final_denominator = denominador;
-            return final_numerator + '/' + final_denominator
+            if (Number(num1_numerator.value) < Number(num3_numerator.value)){
+                final_numerator = -(Number(num3_numerator.value) - Number(num1_numerator.value))
+            }
+            else{
+                final_numerator = Number(num1_numerator.value) - Number(num3_numerator.value)
+            }
+            
+            res_operation_of_fractions.innerHTML = `${final_numerator}` + '/' + `${final_denominator}`
         }
 
-        else if (operation== '*' || operation=='x' || operation =='X'){
+        else if (operation_frac.value == '*' || operation_frac.value == 'x' || operation_frac.value == 'X'){
             //in case the operation is multiplying
-            console.log(`Multiplicação de frações entre: ${numerador}/${denominador} X ${numerador}/${denominador}`);
-            final_numerator = numerador * numerador;
-            final_denominator = denominador * denominador;
-            return final_numerator + '/' + final_denominator;
+            final_numerator = num1_numerator * num3_numerator;
+            final_denominator = num2_denominator * num4_denominator;
+            res_operation_of_fractions.innerHTML = `${final_numerator}` + '/' + `${final_denominator}`
         }
-        else if (operation=='/'){
+        else if (operation_frac.value == '/'){
             //in case the operation is diving 
-            console.log(`Divisão de fração entre: ${numerador}/${denominador} X ${numerador}/${denominador}`);
-            final_numerator = numerador * denominador;
-            final_denominator = numerador * denominador;
-            return final_numerator + '/' + final_denominator; 
+            final_numerator = num1_numerator * num4_denominator;
+            final_denominator = num3_numerator * num2_denominator;
+            res_operation_of_fractions.innerHTML = `${final_numerator}` + '/' + `${final_denominator}`
         }
     }
 };
@@ -210,7 +226,6 @@ function exponent_Calculator(){
         
 };
 
-console.log(exponent_Calculator(2,3))
 function calculate_numbers_with_exponent(base, exponent, base, exponent, operation){
     
     if (base == base){
