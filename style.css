@@ -204,10 +204,18 @@ input{
 
 .fraction{
     display: flex;
+  
     align-items: center;
+  
     justify-items: center;
+    justify-content: space-around;
+  
     flex-direction: row;
     align-items: center;
+
+    text-align: center;
+    font-weight: 700;
+    
 }
 
 .inputnum2{
@@ -256,18 +264,18 @@ input{
         width: 80%;
     }
 }
-
 @media (max-width:840px){
-    .bulb{
-        margin: -75%;
-        margin-left: 80%;
-    }
-
-    .light_lamp{
-        clip-path: polygon(45% 33%, 55% 33%, 60% 100%, 30% 100%)
+    .lamp{
+        display: flex;
+        position: fixed;
+        align-items: center;
+        align-content: center;
+        flex-direction: column;
+        gap: 0px;
+        padding: -10%;
+        margin: -6em;
     }
 }
-
 @media (min-width:801px){    
     .quadrado{
         width: 20em;
