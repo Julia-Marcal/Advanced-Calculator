@@ -1,0 +1,7 @@
+Color pallete
+
+#88C4C8
+#324B4D
+#94B0B2
+#B8B6DB
+#8381A4
