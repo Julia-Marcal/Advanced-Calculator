@@ -91,6 +91,7 @@ body::-webkit-scrollbar {
     gap: 0px;
     padding: 0px;
     margin: 0px;
+    margin-left: -5%;
 }
 
 .bulb{

@@ -1,3 +1,9 @@
+/*CSS CONFIGURATION*/
+let lamp = document.querySelector('.lamp')
+let bulb = document.querySelector('.bulb')
+let light_lamp = document.querySelector('.light_lamp')
+let light_on = 0;
+
 let num1_numerator = document.querySelector('#fraction_num1')
 let num2_denominator  = document.querySelector('#fraction_num2')
 let num3_numerator  = document.querySelector('#fraction_num3')
@@ -17,6 +23,30 @@ let res_exponent = document.querySelector('#res_exponent')
 let Global_lmc = 1;
 // is the value of lmc that is scoped globally
 //it was scoped that way so it can be used in other functions
+
+function change_background(){
+    if (light_on == 0){
+        light_on = 1;
+        document.body.style.backgroundColor = "#324B4D";
+        bulb.style.backgroundColor = '#919090';
+        bulb.style.boxShadow = '0px 0px 0px';
+        light_lamp.style.opacity = 0;
+        document.querySelectorAll('.quadrado').forEach(el =>{
+            el.style.backgroundColor = '#758e8f';
+        })
+    }
+    else{
+        document.body.style.backgroundColor = "";
+        bulb.style.backgroundColor = '';
+        bulb.style.boxShadow = '';
+        light_lamp.style.opacity = '';
+        document.querySelectorAll('.quadrado').forEach(el =>{
+            el.style.backgroundColor = '';
+        })
+        light_on = 0;
+    }
+
+}
 
 function lmc(x, y, input_lmc){
     res_lmc.innerHTML = ' ';
