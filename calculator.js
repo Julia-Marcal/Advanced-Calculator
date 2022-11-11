@@ -19,13 +19,13 @@ let num1_exponent_c = document.querySelector('#num1_exponent_c')
 let num2_exponent_c = document.querySelector('#num2_exponent_c')
 let res_exponent = document.querySelector('#res_exponent')
 
-
 let Global_lmc = 1;
 // is the value of lmc that is scoped globally
 //it was scoped that way so it can be used in other functions
 
-function change_background(){
+bulb.addEventListener('click', function change_background(){
     if (light_on == 0){
+        //Dark mode
         light_on = 1;
         document.body.style.backgroundColor = "#324B4D";
         bulb.style.backgroundColor = '#919090';
@@ -34,19 +34,17 @@ function change_background(){
         document.querySelectorAll('.quadrado').forEach(el =>{
             el.style.backgroundColor = '#758e8f';
         })
+        return;
     }
-    else{
-        document.body.style.backgroundColor = "";
-        bulb.style.backgroundColor = '';
-        bulb.style.boxShadow = '';
-        light_lamp.style.opacity = '';
-        document.querySelectorAll('.quadrado').forEach(el =>{
-            el.style.backgroundColor = '';
-        })
-        light_on = 0;
-    }
-
-}
+    document.body.style.backgroundColor = "";
+    bulb.style.backgroundColor = '';
+    bulb.style.boxShadow = '';
+    light_lamp.style.opacity = '';
+    document.querySelectorAll('.quadrado').forEach(el =>{
+        el.style.backgroundColor = '';
+    })
+    light_on = 0;
+});
 
 function lmc(x, y, input_lmc){
     res_lmc.innerHTML = ' ';
@@ -60,31 +58,31 @@ function lmc(x, y, input_lmc){
     if (input_lmc == 1){
         input1 = x
         input2 = y
-    }
-    else{
-        input1 = num1_lmc.value
-        input2 = num2_lmc.value   
-    }
-    
+    }else{
+        input1 = Number(num1_lmc.value)
+        input2 = Number(num2_lmc.value)
+        input_lmc = 0;
+    };
     while(lmc_found == false){
         if (input1 == 1 && input2 == 1){
             for (let pos = 0; pos < list_of_num_already_divided.length; pos++){
                 total_sum_of_list = total_sum_of_list*list_of_num_already_divided[pos]
             };
-        Global_lmc = total_sum_of_list;
-        if (input_lmc != 1){
-            res_lmc.innerHTML = Global_lmc
-            lmc_found = true;
-        }
-        lmc_found = true
-        }
+            Global_lmc = total_sum_of_list;
+            if (input_lmc != 1){
+                res_lmc.innerHTML = Global_lmc
+                lmc_found = true;
+                return;
+            }
+            lmc_found = true
+            }
 
-        else if (num_prim != 2 && num_prim % 2 == 0 && num_prim % 3 == 0){
+        if (num_prim != 2 && num_prim % 2 == 0 && num_prim % 3 == 0){
             num_prim ++
             continue
         }
 
-        else if(num_prim > input1 && num_prim > input2){
+        if(num_prim > input1 && num_prim > input2){
             num_prim = 2;
         };
         
@@ -95,12 +93,12 @@ function lmc(x, y, input_lmc){
                     list_of_num_already_divided.push(num_prim);
                     break
                 }
-                else if ( input1 == num_prim){
+                if ( input1 == num_prim){
                     list_of_num_already_divided.push(num_prim);
                     Object.freeze(input1=1);
                     continue
                 }
-                else if (input2 ==num_prim){
+                if(input2 == num_prim){
                     list_of_num_already_divided.push(num_prim);
                     Object.freeze(input2=1);
                     continue
@@ -117,26 +115,24 @@ function lmc(x, y, input_lmc){
                     num_prim ++;
                     continue
                 }
-                else{
-                    if(Number.isInteger(input1) && Number.isInteger(input2)){
-                        list_of_num_already_divided.push(num_prim);
-                        continue
-                    }
-                    else if(Number.isInteger(input1)){
-                        list_of_num_already_divided.push(num_prim);
-                        input2 *= num_prim;
-                        continue
-                    }
-                    else if(Number.isInteger(input2)){
-                        list_of_num_already_divided.push(num_prim) ;
-                        input1 *= num_prim;
-                        continue
-                    } 
-                }    
-            }
+                if(Number.isInteger(input1) && Number.isInteger(input2)){
+                    list_of_num_already_divided.push(num_prim);
+                    continue
+                }
+                if(Number.isInteger(input1)){
+                    list_of_num_already_divided.push(num_prim);
+                    input2 *= num_prim;
+                    continue
+                }
+                if(Number.isInteger(input2)){
+                    list_of_num_already_divided.push(num_prim) ;
+                    input1 *= num_prim;
+                    continue
+                } 
+        }
 
             //check if only the first value is different than 1
-            else if (input1 != 1){
+            if (input1 != 1){
                 input1 /= num_prim;
                 
                 if(Number.isInteger(input1) == true){
@@ -149,7 +145,7 @@ function lmc(x, y, input_lmc){
             }
 
             //in case only the 2nd value is different than 1
-            else if (input2 != 1){
+            if (input2 != 1){
                 input2 /= num_prim;
 
                 if(Number.isInteger(input2) == true){
@@ -164,10 +160,12 @@ function lmc(x, y, input_lmc){
 };
 
 
+
 function fraction_Operation(){
     let final_numerator = 0;
     let final_denominator = 0;
     res_exponent.innerHTML = operation_frac.innerHTML;
+
     if (num2_denominator.value !==  num4_denominator.value && operation_frac.value == '+' || 
     num2_denominator.value !==  num4_denominator.value && operation_frac.value == '-'){
         //in case denominators are not the same number
