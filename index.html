@@ -67,11 +67,28 @@
 
         <div class="quadrado">
             <h3>NUMBERS WITH EXPONENTS</h3>
-            <p><input type="number" class='inputnum' placeholder = 'Segundo Número' name="num1" id="num1"></p>
-            <p><input type="number" class='inputnum' placeholder='Primeiro Número' name="num2" id="num2"></p>
-            <br><input type="button" class="button" value="Resultado" onclick="exponent_Calculator()"></p>
 
-            <div id="res1">
+            <div class="numbers_exponent">
+
+                <div>
+                    <p><input type="number" class='inputnum2' placeholder = 'Expoente' name="exp_num1" id="exp_num1"></p>
+                    <p><input type="number" class='inputnum2' placeholder='Primeiro Número' name="num_elevate_1" id="num_elevate_1"></p>
+                </div>
+
+                <br>
+                    <p><input type="text" class='inputnum2' placeholder='Operador' name="operator_ele" id="operator_ele" value=""></p>
+                <br>
+
+                <div>
+                    <p><input type="number" class='inputnum2' placeholder = 'Expoente' name="exp_num2" id="exp_num2"></p>
+                    <p><input type="number" class='inputnum2' placeholder = 'Segundo Número' name="num_elevate_2" id="num_elevate_2"></p>
+                </div>
+
+            </div>    
+
+            <br><input type="button" class="button2" value="Resultado" onclick="calculate_numbers_with_exponent()"></p>
+            
+            <div id="res_exp_num">
                 <p>
                     <!--!!Resultado--->
                 </p>
@@ -94,28 +111,10 @@
            
         <div class="quadrado">
             <h3>TESTE CONTAINER</h3>
-            <p><input type="number" class='inputnum' placeholder = 'Segundo Número' name="num1_exponent_c" id="num1_exponent_c"></p>
-            <p><input type="number" class='inputnum' placeholder='Primeiro Número' name="num2_exponent_c" id="num2_exponent_c"></p>
-            <br><input type="button" class="button" value="Resultado" onclick="exponent_Calculator()"></p>
-
-            <div id="res_exponent">
-                <p>
-                    <!--!!Resultado--->
-                </p>
-            </div>
         </div>
 
         <div class="quadrado">
             <h3>TEST CONTAINER</h3>
-            <p><input type="number" class='inputnum' placeholder = 'Segundo Número' name="num1_exponent_c" id="num1_exponent_c"></p>
-            <p><input type="number" class='inputnum' placeholder='Primeiro Número' name="num2_exponent_c" id="num2_exponent_c"></p>
-            <br><input type="button" class="button" value="Resultado" onclick="exponent_Calculator()"></p>
-
-            <div id="res_exponent">
-                <p>
-                    <!--!!Resultado--->
-                </p>
-            </div>
         </div>
 
     </article>
