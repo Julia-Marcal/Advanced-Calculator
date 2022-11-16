@@ -4,6 +4,12 @@ let bulb = document.querySelector('.bulb')
 let light_lamp = document.querySelector('.light_lamp')
 let light_on = 0;
 
+//LMC
+let num1_lmc = document.querySelector('#num1_lmc')
+let num2_lmc = document.querySelector('#num2_lmc')
+let res_lmc = document.querySelector('#res_lmc')
+
+//fraction operatiion
 let num1_numerator = document.querySelector('#fraction_num1')
 let num2_denominator  = document.querySelector('#fraction_num2')
 let num3_numerator  = document.querySelector('#fraction_num3')
@@ -11,13 +17,18 @@ let num4_denominator  = document.querySelector('#fraction_num4')
 let operation_frac  = document.querySelector('#operator_fraction')
 let res_operation_of_fractions  = document.querySelector('#res_fraction')
 
-let num1_lmc = document.querySelector('#num1_lmc')
-let num2_lmc = document.querySelector('#num2_lmc')
-let res_lmc = document.querySelector('#res_lmc')
-
+//Exponent calculator
 let num1_exponent_c = document.querySelector('#num1_exponent_c')
 let num2_exponent_c = document.querySelector('#num2_exponent_c')
 let res_exponent = document.querySelector('#res_exponent')
+
+//Calculate_num_with_exponent
+let exp_1 = document.querySelector('#exp_num1')
+let num_ele_1 = document.querySelector('#num_elevate_1')
+let operator_ele = document.querySelector('#operator_ele')
+let exp_2 = document.querySelector('#exp_num2')
+let num_ele_2 = document.querySelector('#num_elevate_2')
+let result_of_exp = document.querySelector('#res_exp_num')
 
 let Global_lmc = 1;
 // is the value of lmc that is scoped globally
@@ -46,6 +57,7 @@ bulb.addEventListener('click', function change_background(){
     light_on = 0;
 });
 
+
 function lmc(x, y, input_lmc){
     res_lmc.innerHTML = ' ';
     //get html clean
@@ -55,12 +67,12 @@ function lmc(x, y, input_lmc){
     let num_prim = 2;
     let input2;
     let input1;
+    input1 = Number(num1_lmc.value)
+    input2 = Number(num2_lmc.value)
     if (input_lmc == 1){
         input1 = x
         input2 = y
     }else{
-        input1 = Number(num1_lmc.value)
-        input2 = Number(num2_lmc.value)
         input_lmc = 0;
     };
     while(lmc_found == false){
@@ -160,7 +172,6 @@ function lmc(x, y, input_lmc){
 };
 
 
-
 function fraction_Operation(){
     let final_numerator = 0;
     let final_denominator = 0;
@@ -230,69 +241,93 @@ function fraction_Operation(){
 };
 
 
-function exponent_Calculator(){
+function exponent_Calculator(x, y, input_exponent){
+    let num1;
+    let num2;
+
+    if (input_exponent !== 1){
+        num1 = num1_exponent_c.value
+        num2 = num2_exponent_c.value
+    }
+    else{
+        num1 = x;
+        num2 = y;
+    }
+
     res_exponent.innerHTML = '';
     let result = 1;
-    const exp_negative = num2_exponent_c.value;
+    const exp_negative = num2;
 
-    if (Number(num2_exponent_c.value < 0)){
-        num2_exponent_c.value *= -1;
+    if (Number(num2 < 0)){
+        num2 *= -1;
     };
     
-    for(let count=0;count < num2_exponent_c.value; count++){
-        result *= Number(num1_exponent_c.value)
+    for(let count=0;count < num2; count++){
+        result *= Number(num1)
     };
-
+    
     if (result > 1 && exp_negative > 0){
-        res_exponent.innerHTML = `${result}`
+        if (input_exponent !== 1){
+            res_exponent.innerHTML = `${result}`
+        }
         return result;
     };
     if (exp_negative < 0){
-        res_exponent.innerHTML = `1/${result}`
+        if (input_exponent !== 1){
+            res_exponent.innerHTML = `1/${result}`
+        }
         return  '/' + result
     }
         
 };
 
-function calculate_numbers_with_exponent(base, exponent, base, exponent, operation){
+function calculate_numbers_with_exponent(){
     
-    if (base == base){
-        //if bases are equal the count will be focused on the exponents
-       if (operation == '-'){
-        minus_exp = (exponent_Calculator(base,exponent)) - (exponent_Calculator(base,exponent))
-        return minus_exp;
+    if (num_ele_1.value == num_ele_2.value){
+       if(operator_ele.value == '-'){
+        minus_exp = (exponent_Calculator(num_ele_1.value,exp_1.value, 1)) - (exponent_Calculator(num_ele_2.value, exp_2.value, 1))
+        result_of_exp.innerHTML = minus_exp;
+        return;
        } 
-       else if (operation == '+'){
-        sum_exp = (exponent_Calculator(base,exponent)) + (exponent_Calculator(base,exponent))
-        return sum_exp;
+       if (operator_ele.value == '+'){
+        sum_exp = (exponent_Calculator(num_ele_1.value, exp_1.value, 1)) + (exponent_Calculator(num_ele_2.value, exp_2.value, 1))
+        result_of_exp.innerHTML = sum_exp;
+        return;
        }
 
-       else if (operation == '*' || operation =='x' || operation =='X'){
-        multiple_exp = [base, (exponent+exponent)]
-        return 'base: ' + multiple_exp[0] + '\nexpoente: ' + multiple_exp[1];
-       }
-       else{
-        division_exp = [base, (exponent-exponent)]
-        return 'base: ' + division_exp[0] + '\nexpoente: ' + division_exp[1] ;
+       if (operator_ele.value == '*' || operator_ele.value =='x' || operator_ele.value == 'X'){
+        multiple_exp_base = num_ele_1.value;
+        multiple_exp_exponent = Number(exp_1.value) + Number(exp_2.value);
+        result_of_exp.innerHTML = `${multiple_exp_base} ^ ${multiple_exp_exponent}`
+        return;
+        }
+
+       if (operator_ele.value == '/'){
+        division_exp_base = num_ele_1.value;
+        division_exp_exponent = Number(exp_1.value) - Number(exp_2.value);
+        result_of_exp.innerHTML = `${division_exp_base} ^ ${division_exp_exponent}`
+        return;
        }
     }
 
-    else{
-        //in case the bases imputed are different
-        diff_base1 = exponent_Calculator(base, exponent)
-        diff_base2 = exponent_Calculator(base, exponent)
-        if (operation == '+'){
-            return diff_base1 + diff_base2;
-        }
-        else if (operation == '-'){
-            return diff_base1 - diff_base2;
-        }
-        else if (operation == '*' || operation == 'x' || operation == 'X'){
-            return parseInt(diff_base1 * diff_base2)
-        }
-        else{
-            return parseInt(diff_base1 / diff_base2 )
-        }
+    //in case the bases imputed are different
+    let diff_base1 = exponent_Calculator(num_ele_1.value, exp_1.value, 1)
+    let diff_base2 = exponent_Calculator(num_ele_2.value, exp_2.value, 1)
+    if (operator_ele.value == '+'){
+        result_of_exp.innerHTML = Number(diff_base1) + Number(diff_base2)
+        return;
+    }
+    if (operator_ele.value == '-'){
+        result_of_exp.innerHTML = Number(diff_base1) - Number(diff_base2)
+        return;
+    }
+    if (operator_ele.value == '*' || operator_ele.value == 'x' || operator_ele.value == 'X'){
+        result_of_exp.innerHTML = Number(diff_base1) * Number(diff_base2)
+        return;
+    }
+    if (operation_ele.value == '/'){
+        result_of_exp.innerHTML = Number(diff_base1) / Number(diff_base2)
+        return;
     }
 };
 

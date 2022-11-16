@@ -237,6 +237,23 @@ input{
     cursor: pointer;
 }
 
+/*Operação potencia*/
+
+.numbers_exponent{
+    display: flex;
+  
+    align-items: center;
+  
+    justify-items: center;
+    justify-content: space-around;
+  
+    flex-direction: row;
+    align-items: center;
+
+    text-align: center;
+    font-weight: 700;
+    
+}
 
 /*MEDIA*/
 
