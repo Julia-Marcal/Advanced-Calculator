@@ -1,38 +1,27 @@
 # Calculator_advanced
 
-**Site da Calculator_advanced sendo criado...**
+<p>É uma calculadora feita em javascript para auxiliar em cálculos mais complexos.<p>
 
-<p>É uma calculadora feita em javascript, com funções que calculam:  <p>
+**Site da Calculator_advanced em Beta...**
 
-- [x] MMC entre 2 números.
+<h2 align='center'><b>
+ Light Mode
+</b></h2>
+
+![website example lightmode](/src/Screenshot_of_site.png "Website Beta lightmode")
+
+<h2 align='center'><b>
+ Dark Mode
+</b></h2>
+
+![website example darkmode](/src/Screenshot_of_site_darkmode.png "Website Beta darkmode")
+
+
+
+## Ações possíveis com  a calculadora: 
+- [x] MMC.
 - [x] Operação de fração.
 - [x] Exponenciação.
-- [x] Operação de números com expoentes iguais ou diferentes.
-- [x] Exponenciação com números negativos ou positivos em fração.
-- [x] Ser possível o uso de expoentes negativos no expoent_calculator.
-- [x] Aumentar a documentação/comentários em novas funções.
+- [x] Operação de números com expoentes.
+- [x] Exponenciação com números em fração.
 - [x] Geometria plana 
-
-### **Importante**
-
-**1.** Para que as funções rodem corretamente é preciso inserir os parâmetros no formato correto.
-
-**2.** Expoentes e bases são representados **apenas** por números inteiros.
-
-**3.** No calculo de frações não é necessário adiconar uma ``/`` (barra) para separar o numerador do denominador.
-
-**4.** Operações são representadas por esses sinais: 
-
-``` + (soma) ```
-
-``` - (subtração) ```
-
-``` *,x ou  X (multiplicação) ```
-
-``` / (divisão) ```
-
-
-#### Para executar as funções do arquivo:
-``` 
- node calculator.js
-```
