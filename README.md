@@ -2,7 +2,6 @@
 
 <p>É uma calculadora feita em javascript para auxiliar em cálculos mais complexos.<p>
 
-**Site da Calculator_advanced em Beta...**
 
 <h2 align='center'><b>
  Light Mode
